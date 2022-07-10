@@ -32,6 +32,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     const fuelStatus = document.getElementById("fuelStatus");
     const cargoStatus = document.getElementById("cargoStatus");
     const h2 = document.getElementById("launchStatus");
+    const ready = true;
     
     if (validateInput(pilot)==="Empty" || validateInput(copilot)==="Empty" || validateInput(fuelLevel)==="Empty" || validateInput(cargoMass)==="Empty"){
         alert("All fields are required.");
@@ -41,9 +42,22 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         alert("Please use only numbers for Fuel Level and Cargo Mass.");
     } else {
         list.style.visibility = "visible";
-        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
-        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready to get going`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready to make this happen`;
         
+        if (fuelLevel < 10000){
+            ready = false;
+            fuelStatus.innerHTML = "You need more fuel, yo!";
+        } else {
+            fuelStatus.innerHTML = "Fuel levels good";
+        }
+
+        if (cargoMass > 10000){
+            ready = false;
+            cargoStatus.innerHTML = "We ain't going anywhere with this much mass!"
+        } else {
+            cargoStatus.innerHTML = "Way to pack light! Cargo mass is good to go!"
+        }
     }
 
     
