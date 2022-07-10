@@ -1,5 +1,5 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+// require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
@@ -16,17 +16,38 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
-const pilotName = document.querySelector("input[name=pilotName]").value;
-const coPilotName = document.querySelector("input[name=coPilotName]").value;
-const fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-const cargoLevel = document.querySelector("input[name=cargoLevel]").value;
-
 function validateInput(testInput) {
-   console.log(pilotName);
+   if (testInput === ""){
+    return "Empty";
+   } else if (isNaN(testInput) === false){
+    return "Is a Number";
+   } else {
+    return "Not a Number";
+   }
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
+    const pilotStatus = document.getElementById("pilotStatus");
+    const copilotStatus = document.getElementById("copilotStatus");
+    const fuelStatus = document.getElementById("fuelStatus");
+    const cargoStatus = document.getElementById("cargoStatus");
+    const h2 = document.getElementById("launchStatus");
+    
+    if (validateInput(pilot)==="Empty" || validateInput(copilot)==="Empty" || validateInput(fuelLevel)==="Empty" || validateInput(cargoMass)==="Empty"){
+        alert("All fields are required.");
+    } else if (validateInput(pilot)==="Is a Number" || validateInput(copilot)==="Is a Number"){
+        alert("Please use only letters for Pilot and Co-pilot names.");
+    } else if (validateInput(fuelLevel)==="Not a Number" || validateInput(cargoMass)==="Not a Number"){
+        alert("Please use only numbers for Fuel Level and Cargo Mass.");
+    } else {
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    }
+
+    list.style.visibility = "visible";
+    
+
+    
 }
 
 async function myFetch() {
