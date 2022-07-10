@@ -40,11 +40,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     } else if (validateInput(fuelLevel)==="Not a Number" || validateInput(cargoMass)==="Not a Number"){
         alert("Please use only numbers for Fuel Level and Cargo Mass.");
     } else {
+        list.style.visibility = "visible";
         pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
         copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+        
     }
 
-    list.style.visibility = "visible";
+    
     
 
     
@@ -62,8 +64,8 @@ async function myFetch() {
 function pickPlanet(planets) {
 }
 
-module.exports.addDestinationInfo = addDestinationInfo;
-module.exports.validateInput = validateInput;
-module.exports.formSubmission = formSubmission;
-module.exports.pickPlanet = pickPlanet; 
-module.exports.myFetch = myFetch;
+// module.exports.addDestinationInfo = addDestinationInfo;
+// module.exports.validateInput = validateInput;
+// module.exports.formSubmission = formSubmission;
+// module.exports.pickPlanet = pickPlanet; 
+// module.exports.myFetch = myFetch;
