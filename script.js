@@ -6,12 +6,13 @@ window.addEventListener("load", function() {
     const copilot = document.querySelector("input[name=copilotName]");
     const fuelLevel = document.querySelector("input[name=fuelLevel]");
     const cargoMass = document.querySelector("input[name=cargoMass]");
-    const form = document.getElementById("launchForm");
-    const list = document.getElementById("faultyItems");
+    let form = document.getElementById("launchForm");
+    let list = document.getElementById("faultyItems");
 
     form.addEventListener("submit", function(event){
+        event.preventDefault();
         formSubmission(document, list, pilot.value, copilot.value, fuelLevel.value, cargoMass.value);
-        event.preventDefault;
+        myFetch(event);
     })
 
 //    let listedPlanets;
