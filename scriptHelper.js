@@ -4,7 +4,6 @@
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
    let planet = pickPlanet()
-   let target = 
    document.getElementById("missionTarget").innerHTML = 
    `
                 <h2>Mission Destination</h2>
@@ -83,17 +82,15 @@ async function myFetch() {
     let planetsReturned = [];
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-        response.json().then(function(json){
-            for (let i=0; i<json.length; i++){
-            planetsReturned.push(json[i]);
-            }
-        });
+        response.json();
     });
-    console.log(planetsReturned);
+    
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
+    let planet = Math.floor(Math.random() * planets.length - 1)
+    return planet; 
 }
 
 // module.exports.addDestinationInfo = addDestinationInfo;
