@@ -34,7 +34,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     const fuelStatus = document.getElementById("fuelStatus");
     const cargoStatus = document.getElementById("cargoStatus");
     const h2 = document.getElementById("launchStatus");
-    let ready = true;
+    let fuelReady = true;
+    let cargoReady = true;
     
     if (validateInput(pilot)==="Empty" || validateInput(copilot)==="Empty" || validateInput(fuelLevel)==="Empty" || validateInput(cargoMass)==="Empty"){
         alert("All fields are required.");
@@ -48,22 +49,22 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         copilotStatus.innerHTML = `Co-pilot ${copilot} is ready to make this happen`;
         
         if (fuelLevel < 10000){
-            ready = false;
+            fuelReady = false;
             fuelStatus.innerHTML = "You need more fuel, yo!";
         } else {
-            ready = true;
+            fuelReady = true;
             fuelStatus.innerHTML = "We've got fuel for days!";
         }
 
         if (cargoMass > 10000){
-            ready = false;
+            cargoReady = false;
             cargoStatus.innerHTML = "We ain't going anywhere with this much mass!"
         } else {
-            ready = true;
+            cargoReady = true;
             cargoStatus.innerHTML = "Way to pack light! Cargo mass is good to go!"
         }
 
-        if (ready = true){
+        if (cargoReady === true && fuelReady === true){
             h2.innerHTML = "Shuttle is ready for launch";
             h2.style.color = "green";
         } else {
