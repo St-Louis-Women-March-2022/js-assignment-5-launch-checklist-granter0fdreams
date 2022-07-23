@@ -52,7 +52,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             fuelReady = false;
             fuelStatus.innerHTML = "You need more fuel, yo!";
         } else {
-            fuelReady = true;
             fuelStatus.innerHTML = "We've got fuel for days!";
         }
 
@@ -60,7 +59,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
             cargoReady = false;
             cargoStatus.innerHTML = "We ain't going anywhere with this much mass!"
         } else {
-            cargoReady = true;
             cargoStatus.innerHTML = "Way to pack light! Cargo mass is good to go!"
         }
 
